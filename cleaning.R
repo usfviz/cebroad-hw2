@@ -1,7 +1,7 @@
 
 library(reshape)
 
-setwd('~/Desktop/MSAN/MSAN622/Homework/HW2')
+# setwd('~/Desktop/MSAN/MSAN622/Homework/HW2')
 
 clean_input <- function(filename, type){
   raw_data <- read.csv(filename, header = TRUE, na.strings = c('NA', '', ' '), skip = 4)
