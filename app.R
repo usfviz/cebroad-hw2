@@ -1,7 +1,7 @@
 library(shiny)
 library(ggvis)
 library(magrittr)
-setwd('~/Desktop/MSAN/MSAN622/Homework/HW2')
+# setwd('~/Desktop/MSAN/MSAN622/Homework/HW2')
 source('cleaning.R')
 
 ui <- fluidPage(
