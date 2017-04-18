@@ -46,5 +46,5 @@ df_full <- merge(full_exp, full_fert, by = c('Country.Code', 'Country.Name', 'Ye
 df_full <- merge(df_full, full_pop, by = c('Country.Code', 'Country.Name', 'Year', 'Region'), all = TRUE)
 df_full <- na_rm(df_full)
 
-clust <- kmeans(cbind(df_full$Total.Population, rep(0, nrow(df_full))), centers = 100)
+clust <- kmeans(cbind(df_full$Total.Population, rep(0, nrow(df_full))), centers = 1000)
 df_full$Pop.Group <- clust$cluster
