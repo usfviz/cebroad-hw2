@@ -1,13 +1,13 @@
 library(shiny)
 library(ggvis)
 library(magrittr)
-# setwd('~/Desktop/MSAN/MSAN622/Homework/HW2')
+# setwd('~/Desktop/MSAN/MSAN622/Homework/HW2/Git')
 source('cleaning.R')
 
 ui <- fluidPage(
   headerPanel('Population, life expectancy, and fertility rate by year'),
   sidebarPanel(
-    sliderInput("year", "Year", 1960, 2015, 1960, step = 1, animate = animateOptions(interval = 5)),
+    sliderInput("year", "Year", 1960, 2015, 1960, step = 1, animate = TRUE),
     checkboxGroupInput("region", "Regions", choices = levels(df_full$Region), selected = levels(df_full$Region))
   ),
   mainPanel(
@@ -28,7 +28,7 @@ server <- function(input, output){
   
   selected %>%
       ggvis(~Life.Expectancy, ~Fertility.Rate, key := ~Country.Name) %>% 
-      layer_points(fill = ~factor(Region, levels = levels(df_full$Region)), size = ~Total.Population) %>% 
+      layer_points(fill = ~factor(Region, levels = levels(df_full$Region)), size = ~Pop.Group) %>% 
       hide_legend("size") %>%
       add_legend("fill", title = "Region") %>%
       scale_numeric("x", domain = c(10, 90), nice = FALSE) %>%

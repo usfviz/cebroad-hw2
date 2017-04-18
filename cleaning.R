@@ -1,7 +1,7 @@
 
 library(reshape)
 
-# setwd('~/Desktop/MSAN/MSAN622/Homework/HW2')
+# setwd('~/Desktop/MSAN/MSAN622/Homework/HW2/Git')
 
 clean_input <- function(filename, type){
   raw_data <- read.csv(filename, header = TRUE, na.strings = c('NA', '', ' '), skip = 4)
@@ -45,3 +45,6 @@ full_pop <- get_meta(clean_pop, 'data/Metadata_Country_API_SP.POP.TOTL_DS2_en_cs
 df_full <- merge(full_exp, full_fert, by = c('Country.Code', 'Country.Name', 'Year', 'Region'), all = TRUE)
 df_full <- merge(df_full, full_pop, by = c('Country.Code', 'Country.Name', 'Year', 'Region'), all = TRUE)
 df_full <- na_rm(df_full)
+
+clust <- kmeans(cbind(df_full$Total.Population, rep(0, nrow(df_full))), centers = 100)
+df_full$Pop.Group <- clust$cluster
