@@ -33,6 +33,8 @@ server <- function(input, output){
       add_legend("fill", title = "Region") %>%
       scale_numeric("x", domain = c(10, 90), nice = FALSE) %>%
       scale_numeric("y", domain = c(0, 9.0), nice = FALSE) %>%
+      add_axis("x", title = "Life Expectancy") %>%
+      add_axis("y", title = "Fertility Rate") %>%
       add_tooltip(all_values, "hover") %>%
       bind_shiny('ggvis', 'ggvis_ui')
 }
